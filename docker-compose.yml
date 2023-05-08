@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    volumes:
+        - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-h", "localhost", "-p", "6379", "ping"]
+      interval: 2s
+      timeout: 1m30s
+      retries: 5
+      start_period: 5s
+  jupyter:
+    image: jupyter/minimal-notebook:latest
+    container_name: jupyter
+    volumes:
+      - ./:/home/jovyan/chatbot
+    ports:
+      - 8888:8888
+    depends_on:
+      - "redis"
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      OPENAI_API_KEY: "YOUR API KEY HERE"
+
+volumes:
+  redis_data:
