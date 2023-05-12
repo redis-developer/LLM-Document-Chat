@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - 8001:8001
+    restart: always
+
+  jupyter:
+    image: jupyter/minimal-notebook:latest
+    container_name: jupyter
+    volumes:
+      - ../../:/home/jovyan/
+    ports:
+      - 8888:8888
+    depends_on:
+      - "redisinsight"
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+
+volumes:
+  redisinsight_data:

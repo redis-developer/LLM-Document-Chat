@@ -1,0 +1,6 @@
+docker-compose-keys.yml
+.ipynb_checkpoints
+.env
+.env-azure
+.env-azure-local
+.env-openai
