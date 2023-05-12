@@ -3,7 +3,6 @@
 This repository provides the materials for the joint Redis/Microsoft blog post here (link to come). It contains a Jupyter notebook that demonstrates how to use Redis as a vector database to store and retrieve document vectors. The notebook also shows how to use LlamaIndex to perform semantic search for context within documents
 and provide a chatbot-like experience using OpenAI.
 
-
 https://user-images.githubusercontent.com/13009163/237002719-26e3118d-77ee-4ded-96f5-6ba801cae66c.mov
 
 
@@ -82,6 +81,7 @@ There are some ``docker-compose.yml`` files in the ``docker`` directory that wil
 redis-stack locally and redisinsight in the case where a remote Redis is being used (like ACRE).
 
 ### Run
+
 
 To run the script, follow these steps:
 
