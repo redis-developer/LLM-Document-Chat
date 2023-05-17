@@ -26,7 +26,6 @@ AZURE_OPENAI_API_BASE=https://<your deployment name>.openai.azure.com/
 OPENAI_API_BASE=https://api.openai.com/v1/
 REDIS_ADDRESS=localhost
 REDIS_PORT=6379
-REDIS_SSL=False
 REDIS_PASSWORD=
 ```
 
@@ -59,7 +58,7 @@ OPENAI_API_KEY=<your key here>
 
 ### Azure Redis Enterprise, Redis Enterprise Cloud, and Redis Stack
 
-The tutorial will require the usage of the Redis-stack contianer because of the use of RediSearch
+The tutorial will require the usage of the Redis-stack container because of the use of RediSearch
 and RedisJSON. There are three options for Redis
 
 1. Redis Enterprise Cloud
@@ -70,8 +69,6 @@ and RedisJSON. There are three options for Redis
 For each, the following options are required
 
 ```bash
-# Azure Redis Enterprise requires SSL and a password so set
-REDIS_SSL=True
 REDIS_PASSWORD=<your password here>
 REDIS_ADDRESS=<your redis address here>
 REDIS_PORT=<your redis port here>
