@@ -28,6 +28,15 @@ REDIS_ADDRESS=localhost
 REDIS_PORT=6379
 REDIS_PASSWORD=
 ```
+---
+**NOTE** You can quickly deploy Azure OpenAI and Azure Cache for Redis Enterprise instance with the right configuration by running the following commands:
+
+```bash
+az group create -n LLMDocChatRG -l eastus
+
+az deployment group create --template-file main.bicep -g LLMDocChatRG
+```
+---
 
 ### To Use Azure OpenAI
 
