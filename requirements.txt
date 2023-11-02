@@ -1,0 +1,11 @@
+pypdf
+PyPDF2
+python-dotenv
+transformers
+tiktoken
+ipywidgets
+openai
+ipywidgets
+nltk
+redis>=5.0.0
+llama_index==0.8.58
