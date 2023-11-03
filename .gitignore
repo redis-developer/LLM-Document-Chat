@@ -4,3 +4,8 @@ docker-compose-keys.yml
 .env-azure
 .env-azure-local
 .env-openai
+.local
+.cache
+.jupyter
+.ipython
+.npm

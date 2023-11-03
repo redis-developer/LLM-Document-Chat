@@ -1,6 +1,5 @@
 pypdf
 PyPDF2
-python-dotenv
 transformers
 tiktoken
 ipywidgets

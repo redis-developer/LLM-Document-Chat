@@ -8,35 +8,43 @@ https://user-images.githubusercontent.com/13009163/237002719-26e3118d-77ee-4ded-
 
 ## Getting Started
 
-The LLM Document Chat tutorial runs on a dockerized Jupyter lab environment to ensure ideal experience and minimal Python environment challenges. At a minimum, you will need to install [Docker Desktop](https://www.docker.com/products/docker-desktop/) (*which comes with Docker Compose*) to run this example.
+The LLM Document Chat tutorial is **intended to run on a dockerized Jupyter lab environment** to ensure ideal experience and minimal Python environment hickups. At a minimum, you will need to install [Docker Desktop](https://www.docker.com/products/docker-desktop/) (*which comes with Docker Compose*) to run this example.
 
 The project maintains a `.env.template` with the following variables pre-defined:
 
 ```bash
-OPENAI_TEXT_MODEL=text-davinci-003
-OPENAI_DEPLOYMENT_TYPE=Text
+# General OpenAI Env Vars
+OPENAI_TEXT_MODEL=gpt-35-turbo
 OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
-OPENAI_EMBEDDINGS_ENGINE_QUERY=text-embedding-ada-002
-OPENAI_API_KEY=<your key here>
 OPENAI_TEMPERATURE=0.7
 OPENAI_MAX_TOKENS=50
-CHUNK_SIZE=500
-CHUNK_OVERLAP=100
+
+# OpenAI Direct Env Vars
+OPENAI_API_KEY=<your key here>
+OPENAI_API_BASE=https://api.openai.com/v1/
+
+# Azure OpenAI Env Vars
+#OPENAI_API_VERSION=2023-05-15 # use OPENAI_API_VERSION only with Azure OpenAI
 AZURE_EMBED_MODEL_DEPLOYMENT_NAME=<your deployment name here>
 AZURE_TEXT_MODEL_DEPLOYMENT_NAME=<your deployment name here>
 AZURE_OPENAI_API_BASE=https://<your deployment name>.openai.azure.com/
-OPENAI_API_BASE=https://api.openai.com/v1/
-REDIS_ADDRESS=localhost
+
+# General Env Vars
+CHUNK_SIZE=500
+CHUNK_OVERLAP=0.2
+
+# Redis Env Vars
+REDIS_HOST=redis
 REDIS_PORT=6379
 REDIS_PASSWORD=
 ```
 
-You must make a copy of this file to create `.env` as follows:
+Make a copy of this file to create `.env` as follows:
 ```bash
 $ cp .env.template .env
 ```
 
-You will then update portions of the env file based on your choices below:
+Update portions of the env file based on your choices below:
 1. **[Choose your OpenAI provider](#choose-your-openai-provider)**
 2. **[Choose your Redis provider](#choose-your-redis-provider)**
 
@@ -45,8 +53,7 @@ You will then update portions of the env file based on your choices below:
 You can choose between **[Azure OpenAI Service](#to-use-azure-openai)** (fully hosted and managed by Azure) and **[OpenAI](#to-use-openai)** direct.
 
 
-#### To Use Azure OpenAI
-
+#### To Use Azure OpenAI (Recommended)
 To use Azure OpenAI, you will need to follow these instructions
 
 1. Create an Azure OpenAI resource.
@@ -63,9 +70,9 @@ AZURE_OPENAI_API_BASE=https://<your deployment name>.openai.azure.com/
 
 To use OpenAI, you will need to follow these instructions
 
-1. Create an OpenAI account
-2. Create an OpenAI API key
-3. Configure the ``.env`` file adding the specific values for your deployments
+1. Create an OpenAI account.
+2. Create an OpenAI API key.
+3. Configure the ``.env`` file adding the specific values for your deployments.
 
 ```bash
 OPENAI_API_KEY=<your key here>
@@ -98,12 +105,13 @@ To open the jupyter environment through docker, follow these steps:
 2. Copy the ``.env.template`` to ``.env`` and configure the values as outlined above.
 3. Run with Docker Compose:
 
-**For Cloud Redis**
-```bash
-docker compose -f docker/cloud/docker-compose.yml up
-```
+    **For Cloud or Azure Redis Enterprise**
+    ```bash
+    docker compose -f docker/cloud/docker-compose.yml up
+    ```
 
-**For Local (Docker) Redis**
-```bash
-docker compose -f docker/local/docker-compose.yml up
-```
+    **For Local (Docker) Redis Stack**
+    ```bash
+    docker compose -f docker/local/docker-compose.yml up
+    ```
+4. Open the Jupyter lab session in your browser at `http://127.0.0.1:8888/lab?token={YOUR GENERATED TOKEN}`. *Check the terminal logs for the token string.*

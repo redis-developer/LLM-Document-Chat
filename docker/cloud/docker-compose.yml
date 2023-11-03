@@ -12,7 +12,7 @@ services:
     volumes:
       - ../../:/home/jovyan/
     env_file:
-      - .env
+      - ../../.env
     ports:
       - 8888:8888
     depends_on:
