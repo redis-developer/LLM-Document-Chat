@@ -19,6 +19,8 @@ services:
     container_name: jupyter
     volumes:
       - ../../:/home/jovyan/
+    env_file:
+      - ../../.env
     ports:
       - 8888:8888
     depends_on:
