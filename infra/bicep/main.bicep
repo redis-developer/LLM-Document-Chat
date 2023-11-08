@@ -3,6 +3,7 @@ param cognitiveServiceName string = 'CognitiveService'
 
 @description('Location for all resources.')
 param location string = resourceGroup().location
+param OpenAIQuota int = 100
 
 module openAi 'openai.bicep' = {
   name: 'openai'
@@ -21,7 +22,7 @@ module openAi 'openai.bicep' = {
           name: 'text-embedding-ada-002'
           version: '2'
         }
-        capacity: 120
+        capacity: OpenAIQuota
       }
       {
         name: 'GPT35Model'
@@ -31,7 +32,7 @@ module openAi 'openai.bicep' = {
         }
         sku: {
           name: 'Standard'
-          capacity: 120
+          capacity: OpenAIQuota
         }
       }
     ]
