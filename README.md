@@ -49,6 +49,24 @@ Update portions of the env file based on your choices below:
 2. **[Choose your Redis provider](#choose-your-redis-provider)**
 
 
+---
+**NOTE** If you are hosting this sample on Azure, you can quickly deploy Azure OpenAI and Azure Cache for Redis Enterprise instance with the right configurations by running the following commands:
+
+```bash
+az group create -n LLMDocChatRG -l eastus
+
+az deployment group create --template-file infra\bicep\main.bicep -g LLMDocChatRG
+```
+
+To remove all Azure resources, simply delete the resource group using:
+```bash
+az group delete -n LLMDocChatRG
+
+```
+
+Alternately, you can choose to use OpenAI or other Redis providers as documented below.
+---
+
 ### Choose your OpenAI provider
 You can choose between **[Azure OpenAI Service](#to-use-azure-openai)** (fully hosted and managed by Azure) and **[OpenAI](#to-use-openai)** direct.
 
